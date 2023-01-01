@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Nunito&display=swap');
+
+/* || RESET */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+iframe {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+input,
+button,
+textarea {
+    font: inherit;
+}
+
+/* || VARIABLES */
+
+:root {
+    /* FONTS */
+    --FF: "Nunito", sans-serif;
+    --FF-HEADINGS: "Fugaz One", cursive;
+    --FS: clamp(1.2rem, 2.2vh, 1.5rem);
+    
+
+    /* COLORS */
+    --NAV-BGCOLOR: rgb(232, 193, 83);
+    --HEADER-BGCOLOR: rgb(232, 193, 83);
+    --HEADER-COLOR: rgb(238, 233, 233);
+    --FONT-COLOR: #000;
+    --LINK-ACTIVE: rgb(0, 0, 0);
+    --LINK-COLOR: #fff;
+    --LINK-HOVER: hsla(0 ,0%, 0%, 0.6);
+    --BORDER-COLOR: #333;
+    --HERO-COLOR: #FFF;
+    --HERO-BGCOLOR: rgba(8, 43, 8, 0.75); 
+    --BGCOLOR-FADE: rgb(252, 220, 160); 
+    --BGCOLOR: rgb(232, 193, 83);;
+    --BGIMAGE: linear-gradient(to bottom, var(--BGCOLOR), var(--BGCOLOR-FADE));
+    --HIGHLIGHT-COLOR: var(--HEADER-BGCOLOR);
+    --BUTTON-COLOR: #fff;
+    
+
+
+
+    /* BORDERS */
+    --BORDERS: 1px solid var(--BORDER-COLOR);
+    --BORDER-RADIUS: 15px;
+
+    /* STANDARD PADDING */
+    --PADDING-TB: 0.25em;
+    --PADDING-SIDE: 2.5%;
+
+    /* STANDARD MARGIN */
+    --MARGIN: clamp(1em, 2.5vh, 1.5em) 0 ;    
+}
+
+/* || UTILITY CLASSES*/
+.nowrap {
+    white-space: nowrap;
+}
+
+.offscreen {
+    position: absolute;
+    left: -10000px;
+}
+
+.center {
+    text-align: center;
+}
+
+
+/* ||GENERAL STYLES */
+html {
+    scroll-behavior: smooth;
+    font-family: var(--FF);
+    font-size: var(--FS);
+    background-color: var(--BGCOLOR);
+    background-image: var(--BGIMAGE);
+    
+}
+
+body {
+    min-height: 100vh;
+    max-width: 900px;
+    margin:  0 auto;   
+    border-left: var(--BORDERS); 
+    border-right: var(--BORDERS); 
+    box-shadow: 0 0 10px var(--BORDER-COLOR);   
+}
+
+h1, h2, h3 {
+    font-family: var(--FF-HEADINGS);
+    letter-spacing: 0.3em;
+}
+
+p {
+    line-height: 1.5;
+}
+
+a:any-link {
+    color: var(--LINK-COLOR);
+    text-decoration: none;
+}
+
+a:hover,
+a.focus-visible {
+    color: var(--LINK-HOVER);
+}
+/*
+a:active {
+    color: var(--LINK-ACTIVE);
+}
+*/
+
+
+/* || HEADER */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1;    
+}
+
+.header__h1 {
+    text-align: center;
+    background-color: var(--HEADER-BGCOLOR);
+    color: var(--HEADER-COLOR);
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+}
+
+.header__nav {
+    background-color: var(--NAV-BGCOLOR);
+    font-size: var(--FS);
+    border-bottom: var(--BORDERS);
+    box-shadow: 0 5px 4px -5px var(--BORDER-COLOR);
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+}
+
+.header__ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;    
+    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.header__ul li a.active {
+    text-decoration: underline;
+}
+
+
+
+/* ||HERO */
+.hero {
+    position: relative; 
+    
+}
+
+.hero__h2 {
+    background-color: var(--HERO-BGCOLOR);    
+    color: var(--HERO-COLOR);
+    padding: 0.25em 0.5em;
+    text-shadow: 2px 2px 5px var(--BORDER-COLOR);
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    animation: showWelcome 0.5s ease-in-out 1s forwards;
+}
+
+.hero__location {
+    padding: var(--PADDING-SIDE) var(--PADDING-TB);
+}
+    
+@keyframes showWelcome {
+    0% {
+        top: -20px;
+        transform: skew(0deg, -5deg) scylaeY(0);
+    }
+
+    80% {
+        top: 30px;
+        transform: skew(10deg, -5deg) scylaeY(1.2);
+    }
+
+    100% {
+        top: 20px;
+        transform: skew(-10deg, -5deg) scylaeY(1);
+    }
+}
+
+/* ||MAIN */
+.main {
+    padding: var(--PADDING-SIDE) var(--PADDING-TB);
+    text-align: center;
+    margin: var(--MARGIN); 
+    
+}
+
+.main__article {
+    scroll-margin-top: 6.5rem;
+    margin: var(--MARGIN);
+}
+
+.main__article:first-child {
+    margin-top: 1em;;
+}
+
+.main__article:last-child {
+    min-height: calc(100vh - 20rem);
+}
+
+.main__container {
+  display: flex; 
+  gap: 1rem;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-evenly;  
+}
+
+.images {
+    position: relative;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;     
+}
+
+.menu_img {
+    height: 200px;
+    width: 250px;
+    border-radius: 50%;     
+}
+
+.details {
+    transform: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);           
+}
+
+.images:hover img {    
+    opacity: 0.5;    
+}
+
+.images:hover .details{
+    opacity: 1;        
+}
+
+.details_price {
+    font-size: var(--FS);
+    color: var(--HEADER-COLOR);         
+}
+
+
+/* ||CONTACT */
+.contact__h2 {
+    margin: 0;
+}
+
+.contact__fieldset {
+    border: none;
+}
+
+.contact__p {
+    margin: 1em 0;
+}
+
+.contact__label {
+    display: block;
+    font-weight: bold;
+}
+
+.contact__input,
+.contact__textarea {
+    padding: 0.5em;
+    border-radius: var(--BORDER-RADIUS);
+    border-width: 2px;
+    width: 70%;
+}
+
+.contact__button {
+    padding: 0.5em;
+    border-radius: var(--BORDER-RADIUS);
+    color: var(--BUTTON-COLOR);
+    background-color: var(--HIGHLIGHT-COLOR);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact__button:hover {    
+    background-color: var(--BGCOLOR-FADE);
+}
+
+/* ||FOOTER */
+.footer {
+    position: static; 
+    margin-top: 50px;
+    bottom: 0;
+    padding: var(--PADDING-TB) var(--PADDING-SIDE);
+    text-align: center;     
+    background-color: var(--HEADER-BGCOLOR);
+    color: var(--FONT-COLOR);  
+}
+
+.social_media {
+    display: flex; 
+    gap: 1rem;
+    justify-content: center;    
+    flex-direction: row;
+    flex-wrap: wrap;     
+}
+
+.fa {
+    padding: 20px;
+    font-size: var(--FS);
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    margin: 2px;
+    border-radius: 50%;  
+    position: relative;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+   
